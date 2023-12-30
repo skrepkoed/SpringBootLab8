@@ -21,14 +21,14 @@ public class StudentController {
 
     @GetMapping("/list")
     public ModelAndView getAllStudents(){
-        ModelAndView mav = new ModelAndView("list-students");
+        ModelAndView mav = new ModelAndView("list-students.html");
         mav.addObject("students", studentRepository.findAll());
         return mav;
     }
 
     @GetMapping("/addStudentForm")
     public ModelAndView addStudentForm(){
-        ModelAndView mav = new ModelAndView("add-student-form");
+        ModelAndView mav = new ModelAndView("add-student-form.html");
         Student student = new Student();
         mav.addObject("student", student);
         return mav;
@@ -42,7 +42,7 @@ public class StudentController {
 
     @GetMapping("/showUpdateForm")
     public ModelAndView showUpdateForm(@RequestParam Long studentId){
-        ModelAndView mav = new ModelAndView("add-student-form");
+        ModelAndView mav = new ModelAndView("add-student-form.html");
         Optional<Student> optionalStudent= studentRepository.findById(studentId);
         Student student = new Student();
         if (optionalStudent.isPresent()) {
